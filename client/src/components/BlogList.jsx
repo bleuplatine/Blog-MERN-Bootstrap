@@ -11,8 +11,8 @@ const BlogList = (props) => {
       {blogs.map(blog => (
         <div key={blog._id} className="col">
           <div className="card">
-            <img src={`https://picsum.photos/id/${blog.imageID}/500/200`} className="card-img-top" alt="..."></img>
             <Link className="text-decoration-none text-reset" to={`/blogs/${blog._id}`}>
+            <img src={`https://picsum.photos/id/${blog.imageID}/500/200`} className="card-img-top" alt="..."></img>
               <div className="card-body">
                 <h5 className="card-title">{blog.title}</h5>
                 <p className="card-text">{blog.body.match(/^.{1,50}/) + '...'}</p>

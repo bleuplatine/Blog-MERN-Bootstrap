@@ -19,7 +19,7 @@ const Create = () => {
       "imageID": Math.floor(Math.random() * 100)
     }
 
-    axios.post("/newBlog", blog)
+    axios.post("/blogs", blog)
       .then(() => {
         console.log('New blog sended')
         setIsLoading(false)
@@ -28,7 +28,7 @@ const Create = () => {
       .catch((err) => console.log(err))
   }
 
-  //   fetch("/newBlog", {
+  //   fetch("/blogs", {
   //     method: "POST",
   //     headers: { "Content-Type": "application/json" },
   //     body: JSON.stringify(blog)
