@@ -9,7 +9,7 @@ const BlogList = (props) => {
     <div className="row row-cols-1 row-cols-md-2 row-cols-lg-3 row-cols-xxl-3 g-4">
       {blogs.map(blog => (
         <div key={blog._id} className="col">
-          <div className="card">
+          <div className="card shadow bg-body rounded">
             <Link className="text-decoration-none text-reset" to={`/blogs/${blog._id}`}>
             <div class="card-header text-warning bg-dark text-center font-monospace">{blog.theme}</div>
             <img src={`https://picsum.photos/id/${blog.imageID}/500/200`} className="card-img-top" alt="..."></img>

@@ -53,8 +53,6 @@ const Create = () => {
         history.push('/')
       }).catch((err) => console.log(err))
 
-    window.location = '/'
-
   }
 
 

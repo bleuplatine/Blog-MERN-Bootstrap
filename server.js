@@ -29,7 +29,7 @@ if (process.env.NODE_ENV === 'production') {
   })
 }
 
-// Running on server
+// running on server
 app.listen(PORT, () => console.log(`Server is running`))
 
 
