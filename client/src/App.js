@@ -7,6 +7,7 @@ import About from './components/About';
 import Create from './components/Create';
 import BlogDetails from './components/BlogDetails';
 import NotFound from './components/NotFound';
+import FootBar from './components/FootBar';
 
 function App() {
 
@@ -37,6 +38,7 @@ function App() {
           </Route>
 
         </Switch>
+        <FootBar />
       </div>
 
     </Router>

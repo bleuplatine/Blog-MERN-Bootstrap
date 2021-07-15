@@ -9,28 +9,6 @@ const Create = () => {
 
   const history = useHistory()
 
-  // useEffect(() => {
-  //   const blog = {
-  //     "title": "from the futurrrrrrrrrrr!",
-  //     "body": "wwwwwwwwooooooooooooooooooohhhhhhh!!!!!!!",
-  //     "theme": "Tech",
-  //     "imageID": 11,
-  //     "date": "47/03/2037"
-  //   }
-
-  //   fetch("/blogs", {
-  //     method: "POST",
-  //     headers: { "Content-Type": "application/json" },
-  //     body: JSON.stringify(blog)
-  //   })
-  //     .then(res => res.json())
-  //     .then(() => {
-  //       console.log('new blog sended')
-  //       setIsLoading(false)
-  //       // history.push('/')
-  //     }).catch((err) => console.log(err))
-  // }, []);
-
   const handleSubmit = (event) => {
     event.preventDefault()
     const blog = {

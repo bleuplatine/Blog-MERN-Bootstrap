@@ -41,7 +41,7 @@ const BlogDetails = () => {
 
       {blog &&
         <div className="card bg-light shadow p-3 mb-5 bg-body rounded" >
-        <div class="card-header text-warning bg-dark text-center font-monospace">{blog.theme}</div>
+        <div className="card-header text-warning bg-dark text-center font-monospace">{blog.theme}</div>
           <img src={`https://picsum.photos/id/${blog.imageID}/600/300`} className="card-img-top" alt="..."></img>
           <div className="card-body">
             <h4 className="card-title">{blog.title}</h4>

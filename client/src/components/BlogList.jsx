@@ -11,7 +11,7 @@ const BlogList = (props) => {
         <div key={blog._id} className="col">
           <div className="card shadow bg-body rounded">
             <Link className="text-decoration-none text-reset" to={`/blogs/${blog._id}`}>
-            <div class="card-header text-warning bg-dark text-center font-monospace">{blog.theme}</div>
+            <div className="card-header text-warning bg-dark text-center font-monospace">{blog.theme}</div>
             <img src={`https://picsum.photos/id/${blog.imageID}/500/200`} className="card-img-top" alt="..."></img>
               <div className="card-body">
                 <h5 className="card-title">{blog.title}</h5>
