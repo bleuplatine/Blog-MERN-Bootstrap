@@ -1,7 +1,9 @@
+const mongoose = require('mongoose')
+
 const Blog = require('../models/blog')
 
 const blog_index = (req, res) => {
-  Blog.find().sort({ createdAt: -1 })
+  Blog.find().sort({ _id: -1 })
     .then((blogs) => res.json(blogs))
     .catch((err) => console.log(err))
 }
@@ -15,6 +17,7 @@ const blog_create = (req, res) => {
 
 const blog_details = (req, res) => {
   const id = req.params.id;
+  if (!mongoose.isValidObjectId(id)) return res.status(404).json();
   Blog.findById(id)
     .then((blog) => res.json(blog))
     .catch(err => console.log(err));
@@ -29,4 +32,4 @@ const blog_delete = (req, res) => {
 }
 
 
-module.exports = { blog_index, blog_create, blog_details, blog_delete}
+module.exports = { blog_index, blog_create, blog_details, blog_delete }

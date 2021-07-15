@@ -15,6 +15,7 @@ const BlogDetails = () => {
       console.log('blog deleted')
       history.push('/')
     })
+    window.location = '/'
   }
 
   console.log(blog);
@@ -39,13 +40,14 @@ const BlogDetails = () => {
         </div>}
 
       {blog &&
-        <div className="card" >
-          <img src={`https://picsum.photos/id/${blog.imageID}/1000/250`} className="card-img-top" alt="..."></img>
+        <div className="card bg-light" >
+        <div class="card-header text-warning bg-dark text-center font-monospace">{blog.theme}</div>
+          <img src={`https://picsum.photos/id/${blog.imageID}/600/300`} className="card-img-top" alt="..."></img>
           <div className="card-body">
             <h4 className="card-title">{blog.title}</h4>
             <p className="card-text">{blog.body}</p>
-            <footer className="blockquote-footer text-end pt-3">Written by <cite title="author">{blog.author}</cite></footer>
-            <button className="btn btn-primary"
+            <footer className="blockquote-footer text-end pt-3">Published on <cite title="theme">{blog.date}</cite></footer>
+            <button className="btn btn-dark"
               onClick={handleDelete}
             >Delete</button>
           </div>

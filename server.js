@@ -1,27 +1,21 @@
 require('dotenv').config()
 
 const express = require('express')
-const cors = require('cors')
 const morgan = require('morgan');
-const mongoose = require('mongoose')
 // const path = require('path')
 
+const connectToDB = require('./config/db')
 const blogRoutes = require('./routes/blogRoutes')
+
+// connection to DB 
+connectToDB()
 
 const app = express()
 const PORT = process.env.PORT
 
-
-// connect to DB & run server
-mongoose.connect(process.env.MONGODB_URI, { useNewUrlParser: true, useUnifiedTopology: true })
-  .then(app.listen(PORT, () => console.log(`Server is running`)))
-  .then(() => console.log('Connected to DB'))
-  .catch((err) => console.log(err))
-
 // middleware 
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
-// app.use(cors())
 app.use(morgan('dev'));
 
 // routes
@@ -34,6 +28,9 @@ if (process.env.NODE_ENV === 'production') {
     res.sendFile(path.resolve(__dirname, 'client', 'build', 'index.html'));
   })
 }
+
+// Running on server
+app.listen(PORT, () => console.log(`Server is running`))
 
 
 

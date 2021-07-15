@@ -1,43 +1,63 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useHistory } from "react-router-dom";
-import axios from 'axios'
 
 const Create = () => {
   const [title, setTitle] = useState('');
   const [text, setText] = useState('');
-  const [author, setAuthor] = useState('');
+  const [theme, setTheme] = useState('');
   const [isLoading, setIsLoading] = useState(false);
 
   const history = useHistory()
+
+  // useEffect(() => {
+  //   const blog = {
+  //     "title": "from the futurrrrrrrrrrr!",
+  //     "body": "wwwwwwwwooooooooooooooooooohhhhhhh!!!!!!!",
+  //     "theme": "Tech",
+  //     "imageID": 11,
+  //     "date": "47/03/2037"
+  //   }
+
+  //   fetch("/blogs", {
+  //     method: "POST",
+  //     headers: { "Content-Type": "application/json" },
+  //     body: JSON.stringify(blog)
+  //   })
+  //     .then(res => res.json())
+  //     .then(() => {
+  //       console.log('new blog sended')
+  //       setIsLoading(false)
+  //       // history.push('/')
+  //     }).catch((err) => console.log(err))
+  // }, []);
 
   const handleSubmit = (event) => {
     event.preventDefault()
     const blog = {
       "title": title,
       "body": text,
-      "author": author,
-      "imageID": Math.floor(Math.random() * 100)
+      "theme": theme,
+      "imageID": Math.floor(Math.random() * 100),
+      "date": new Date().toLocaleString("fr-FR")
     }
 
-    axios.post("/blogs", blog)
+    fetch("/blogs", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(blog)
+    })
+      .then(res => res.json())
       .then(() => {
-        console.log('New blog sended')
+        console.log('new blog sended')
         setIsLoading(false)
         history.push('/')
-      })
-      .catch((err) => console.log(err))
+      }).catch((err) => console.log(err))
+
+    window.location = '/'
+
   }
 
-  //   fetch("/blogs", {
-  //     method: "POST",
-  //     headers: { "Content-Type": "application/json" },
-  //     body: JSON.stringify(blog)
-  //   }).then(() => {
-  //     console.log('new blog sended')
-  //     setIsLoading(false)
-  //     history.push('/')
-  //   }).catch((err) => console.log(err))
-  // }
+
 
   return (
     <div className="container pt-5">
@@ -59,17 +79,18 @@ const Create = () => {
         </div>
 
         <div className="mb-3">
-          <label className="form-label">Author</label>
+          <label className="form-label">Theme</label>
           <select className="form-select" aria-label="Default select example" required
-            value={author} onChange={(event) => setAuthor(event.target.value)}
+            value={theme} onChange={(event) => setTheme(event.target.value)}
           >
             <option value="" disabled className="text-hide">Please select</option>
-            <option value="Luc Ferry">Luc Ferry</option>
-            <option value="Eugénie Bastié">Eugénie Bastié</option>
+            <option value="Reviews">Reviews</option>
+            <option value="Science">Science</option>
+            <option value="Tech">Tech</option>
           </select>
         </div>
 
-        {!isLoading && <button type="submit" className="btn btn-primary">Add Blog</button>}
+        {!isLoading && <button type="submit" className="btn btn-dark">Add Blog</button>}
         {isLoading && <button type="button" className="btn btn-secondary" disabled>Adding Blog...</button>}
       </form>
 
